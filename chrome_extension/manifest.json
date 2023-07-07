@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "Text Transfer and GPT Suggestion Extension",
+  "version": "1.0",
+  "description": "A Chrome extension that enables users to quickly transfer copied text to Google Docs in a predefined format, provides auto-generated text suggestions, and includes a voice dictation feature.",
+  "permissions": [
+    "activeTab",
+    "clipboardRead",
+    "clipboardWrite",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "web_accessible_resources": [
+    "gptIntegration.js",
+    "voiceDictation.js",
+    "ui.js"
+  ]
+}
